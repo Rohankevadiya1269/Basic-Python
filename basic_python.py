@@ -63,7 +63,7 @@ print()
 
 
 # Lists are ordered and changable data types having [] square brackets 
-# Lists also allow duplicate elements
+# Lists also allow duplicate elements   
 # elements in the lists are manipulated using the index numbers
 
 animals = ["Dog","Cat","Cow","Buffalo"]
@@ -184,3 +184,65 @@ print(impfruit)
  
 nwimpfruit = list(fruits)
 print(nwimpfruit)
+
+print()
+#----------------------------------  T U P L E S ---------------------------------
+
+# Tuples are collection of the ordered data
+# They are immutable, that means the elements cannot be modified
+# It also allows duplicate elements similar to lists
+thisTuple = ("apple", "orange", "banana", "orange", "apple")
+print(thisTuple)
+
+# To know the length of the tuple we can use the len() function
+print(len(thisTuple))
+
+# Tuple allows multi data type 
+tuple2 = ("boy",12,22.0,False,"Optus")
+print(tuple2)
+
+# we can also access the tuple items using the index number
+print(tuple2[2])
+
+# we can maipulate the elements in tuple by converting it to a list and then doing the normal list methods
+# Similar to lists we can also loop through the elements
+
+print()
+#----------------------------------  S E T S  -----------------------------------------
+
+
+# It is a data type that is used to store the unordered and unchangable elements
+# it uses {} curly braces
+# In sets duplicates are not allowed
+
+thisSet = {"apple","mango","strawberry","watermelon","kiwi"}
+print(thisSet)
+
+# there can be looping in the set
+for i in thisSet:
+     print(thisSet)
+     
+# -------------------- SET METHODS --------------------------------
+# 1 ADD 
+     
+# we can add the elements in the set
+thisSet.add("orange")
+print(thisSet)
+
+# 2 UPDATE
+# to add two sets we can use update method
+newSet={"coconut","litchi"}
+thisSet.update(newSet)
+print(thisSet)
+
+# 3 REMOVE
+thisSet.remove("coconut")
+print(thisSet)
+
+#4 DISCARD
+thisSet.discard("litchi")
+print(thisSet)
+ 
+#5 CLEAR
+thisSet.clear
+print(thisSet)
