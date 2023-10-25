@@ -246,3 +246,156 @@ print(thisSet)
 #5 CLEAR
 thisSet.clear
 print(thisSet)
+print()
+
+# ------------------------------------- D I C T I O N A R Y ---------------------------------------------------------------
+
+# Dictionaries are used to store the data in key:value pairs
+# The elements in the dictionary are ordered, changable and do not allow duplicates
+
+thisdict = {"company":"Audi",
+            "model":"R8",
+            "engine":"V 10",
+            "fuelType":"Petrol"
+            }
+print(thisdict)
+
+# ony single key can be printed in the dictionary by just defining the key name in the print statement
+# for that you need to mention it in the square brackets []
+# for example to print the model of the car, we can mention the key - model 
+
+print(thisdict["model"])
+
+# It can store any data type, but given that it is in key:value pair
+dict2= {
+     "name":["Rohan","smit","om","harsh"],
+     "age":22,
+     "college":"SOU"
+}
+print(dict2)
+
+# we can print the value of the key by storing it in the variable 
+x = thisdict["model"] # This only prints the value of the key
+print(x)
+
+# we can do the same using the inbuilt method called get
+# ------   GET ()  ---------------------
+
+y= thisdict.get("model")
+print(y)
+
+# to get all the keys of the dictionary there is a method called key
+
+# -------------- KEYS () ---------------
+y =  thisdict.keys()
+print(y)
+
+#---------------- Values ()-----------------
+y= thisdict.values() # this method prints all the values of the dictionary 
+print(y)
+
+# We can change the value of the key in dictionary
+thisdict["model"]="A8 L"  # It changes the model of the car from R8 to A8L
+print(thisdict)
+
+#--------------- ITEMS () ----------
+# this method prints the key and value of dictionary, stored in tuple 
+y= thisdict.items()    # It stores the key:value pair inside tuple, which are stored inside the list 
+print(y)
+
+#   -------------  UPDATE()  --------------
+# This method updates the dictionary within the given arguement
+
+thisdict.update({"fuelType":"Diesel"})     # This updates the the  --> fuelType from petrol to diesel
+print(thisdict)
+
+
+# To remove the items from dictionary there are several methods
+# --------------   POP()  ----------------
+# It removes the items of the specified name
+
+thisdict.pop("fuelType")    # This will remove the key -> fuelType from the dictionary
+print(thisdict)
+
+#  --------------  POPITEM () ----------------
+# This removes the last item entered in the dictionary
+thisdict.popitem()
+print(thisdict)
+
+#------------- del KEYWORD   ---------
+# the del keyword is used to remove the specified item
+del dict2["college"]
+print(dict2)
+
+# when we do not specify the key while using the del keyword, it will the delete the entire dictionary
+
+del dict2         # It entirely deletes the dictionary
+# print(dict2)   # this will give an error because the del keyword has dleted the entire dictionary
+
+# the another method to completely delete the dictionary is clear method
+# -------- clear()  -----------------
+# unlike the del keyword the clear() method will return empty dictionary when we print it 
+thisdict.clear()
+print(thisdict) 
+
+
+# We can also copy the dictionary using the copy() method
+# -------- COPY() ----------------
+
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+print(thisdict)
+mydict = thisdict.copy()
+print(mydict)
+
+#------------- Nested dictionary --------------------------------
+# There can be dictionary inside a dictionary and so on....
+# For example
+
+myFamily ={
+     "Father":{
+          "name":"George",
+          "Age":"51"
+     },
+     "Mother":{
+           "name":"Julia",
+           "Age":"49"
+     },
+     "Son":{
+           "name":"John",
+           "Age":"21"
+     }
+}
+
+print(myFamily)
+
+print()
+
+Father = {
+          "name":"Daniel",
+          "Age":"49"
+}
+Mother = {
+          "name":"Anna",
+          "Age":"48"
+}
+Son={
+          "name":"Dwayne",
+          "Age":"19"
+}
+Daughter = {
+          "name":"Julie",
+          "Age":"15"
+}
+
+myFamily2= {
+     "father":Father,
+     "mother":Mother,
+     "son":Son,
+     "daughter":Daughter
+}
+
+print(myFamily2)
