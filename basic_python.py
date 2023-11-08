@@ -399,3 +399,188 @@ myFamily2= {
 }
 
 print(myFamily2)
+
+print()
+# ----------------------------  CONDITIONS (  IF ELSE ......) ----------------------------
+# conditions if and else are used to check certain conditions, and returns the output as true or false...
+# These conditions can also be used for looping
+
+# ----- 1 IF  statement--------------
+
+a = 105
+b = 101
+if a > b:
+     print(f"a ({a}) is greater than b ({b})")
+print()    
+# ---------- 2  ELIF statement--------------
+#   It is the way to check the next condition if the previous condition is false
+
+a = 105
+b = 106
+if a > b:
+     print(f"a ({a}) is greater than b ({b})")   #it checks the condition if a is greater   
+elif a < b:
+     print(f"a ({a}) is less than b ({b})") # If the previous condition is false the interpreter checks the next condition
+print()   
+# ------------ ELSE --------------
+# if none of the condition is true then the interpreter performs the action written in the else block of code
+
+a = 105
+b=105
+if a > b:
+     print(f"a ({a}) is greater than b ({b})")   #it checks the condition if a is greater   
+elif a < b:
+     print(f"a ({a}) is less than b ({b})") # If the previous condition is false the interpreter checks the next condition
+else:
+     print(f"a ({a}) is equal to  b ({b})")  # If none of the condition is true then, action in the else block is performed   
+print()
+     
+     
+# ------------ SHORT HAND STATEMENT ----------------
+# the statements can be written in short forms
+# there are several ways to write short hand statements
+
+a=100
+b=85
+if a > b : print("A")
+
+a=20
+b=22
+print("A") if a > b else print("B")
+print()
+
+#  we can also combine the if else conditions using the logical operators such as AND / OR / NOT
+
+# -------- A N D
+# This operator returns true if all the conditions are true
+
+x=550
+y=645
+z=556
+
+if x>y & x>z :   # instead of the symbol we can also use the (and) keyword as used in the below elif expression
+     print(f"x ({x}) is greater than y and z")
+elif y>z and y>x:
+     print(f"y ({y}) is greater than x and z")
+else:
+     print(f"z ({z}) is greater than x and y")
+
+print()
+# ---------- O R 
+# This returns true if one of the given condition is true
+
+a=55
+b=12
+c=64
+
+if a>b or a>c:
+     print ("One the statement is true")
+
+print()
+
+
+
+# -------------------------------- L O O P S ------------------------------
+# 1 ---- While loop executes the statement until the condition is true
+#   once the condition becomes false it stops execution
+
+i = 1
+while i <= 6:
+     print (i)
+     i+=1
+print()
+# ------ BREAK --------------
+# it is the statement that stops the execution of the loop even if the condition is true
+
+a = 1 
+while a < 7:
+     print(a)
+     if a == 3 :
+          break
+     a+=1
+print()
+# ----------- CONTINUE ----------------
+# it is used stop the current iteration and continue with the next iteration
+
+a =1 
+while a < 7:
+     a+=1
+     if a == 3:
+          continue
+     print(a)
+     # a += 1
+print()
+# We can also use ELSE statement along with while loop
+
+i= 1
+while i < 6:
+     print(i)
+     i+=1
+else:
+     print("\ni is no longer less than 6")
+
+print()
+     
+# ---------------------------- F O R  LOOPS  ---------------------------------
+
+# For loops are used to iterate over the sequence ( list, tuple, set or string)
+fruits = ["orange","apple","watermelon","banana","mango"]
+for x in fruits:
+# We can also use break and continue statement in the for loops
+     if x=="mango":
+          break
+     print(x)
+
+print()
+
+fruits = ["orange","apple","watermelon","banana",]
+for x in fruits:
+     if x == "apple":
+          continue
+     print(x)
+
+print()
+# we can also loop through strings
+
+name = "Rohan"
+for x in name:
+     print(x)
+print()
+
+
+#  We can also use the --- RANGE --- function 
+for i in range(6):  # it prints the number from 0 until the defined number in range but less than 1 
+     print(i)       # for example here it'll print the number from 0 until 5, because it is one less than 6
+print()
+
+# although the starting point of the range function is 0, but we can specify the number from where to start off
+# example ⬇️
+
+for i in range(2,8):
+     print(i) # in this statement the numbers will print from 2 until 7
+print()
+
+# we can also specify the steps between the numbers, in the sense that how much numbers to skip in between two numbers
+
+for i in range(1,8,2):  # in this statement the numbers will print from 1 to 7, but it will skip two numbers as we've mentioned the step as 2
+     print(i)  # it will print numbers such as 1 3 5 7 
+print()
+
+# We can have nested loops ⬇️ here is the example of it
+fruits=["apple","banana","strawberry","grapes"]
+color=["red","yellow","pink","violet"]
+
+for x in fruits:
+     for y in color:
+          print(x,y) # in this example one element of the outer loop i.e --> fruits will be printed until all the elements of inner loop i.e --> color is printed
+
+print()        # for example --> apple will be printed against all the elements of the color are printed
+          
+          
+          
+#  -------------- PASS ------------
+# for loops cannot be empty, because it may cause an error. So to avoid the error there is the use of the pass statement
+
+for x in [0,1,2,3]:
+    pass  # here in for loop there need a follow up condition either if...else or print statement, otherwise it'll give error
+# but using the pass statement it will not show the error instead it will move ahead
