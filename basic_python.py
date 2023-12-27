@@ -584,3 +584,136 @@ print()        # for example --> apple will be printed against all the elements 
 for x in [0,1,2,3]:
     pass  # here in for loop there need a follow up condition either if...else or print statement, otherwise it'll give error
 # but using the pass statement it will not show the error instead it will move ahead
+
+
+
+# ---------------------------------------------- F U N C T I O N S ------------------------------------------
+# A function is a block of code that runs/executes only when it is called
+# to write a function in python it is required to mention def keyword 
+
+def my_func():
+     print(" This is a function") # it will not print the output as we have not called the function 
+
+# To call the function we need to use the mention the function name outside the block of function
+
+def my_func():
+     print("This is an example of a function")
+     
+my_func()  # now here we have called the function hence it will print the output 
+print()
+# --------------------- Arguments -----
+# information can be passed inside the function in the form of arguments 
+# They are passed after the function.. inside the paranthesis
+# we can pass as many as argument as we want, but they need to be seperated 
+
+def my_employee(employee_name):
+     print("------->  "+employee_name+" SoftEdge Infotech")
+my_employee("Harshal")
+my_employee("Ayush")
+my_employee("Rohan")
+my_employee("Navin")
+print()
+
+# There is the need to mention the number of arguments that we have described in the function, if we fail to mention any of the argument then it will return error
+# for example ⬇️
+def emp_detail( name,  age):
+     print("------->  Name: "+name+" Age: "+age)
+emp_detail("Harshal","22")
+emp_detail("Rohan","21")
+emp_detail("Ayush","20")
+#emp_detail("Kunal")  # I have commented this line for further execution, because it gives error 
+#This will return error because we have defined function for 2 arguments, but here we are passing only one argument
+print()
+
+# ------------------------ ARBITRARY ARGUMENT ------------------------
+# If the number of arguments are unknown, then arbitrary arguments are used.They are represented by star(*args) 
+def student_name(*args):
+     print(" -----  The name of the youngest student is:  "+args[2]) # In this function with arbitrary argument, to print the output, it needs to specify which element to access
+student_name("Takshil","Riken","Aryan","Rahul")  # It will only print one of the elements because it will be unable to print the whole tuple, and it will give error 
+     
+#------------------------ Arbitrary keyword arguments ------------
+# It is also used when the number of arguments are unknown but here we use (**args)
+# It receives the dictionary of keyword arguments in the function 
+def full_name (**name):
+      print(" The last name/Surname  of the person is:"+ name["lname"])
+
+full_name(fname="Ritika",lname="Sharma")
+full_name(fname="Anushka",lname="Kohli")
+full_name(lname="Dhoni")
+print()
+# Default value argument 
+# In this type of function parameter we can set the default value, in case if we return the function without the parameter, it will show it's default value
+
+def my_func(country="India"):
+     print("I am from :"+country)
+my_func("United States")
+my_func("United Kingdom")
+my_func("Russia")
+my_func() # Here although we have not passed the parameter when the function requires, it will not show error because we have defined the default value
+print()
+
+# You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
+# Let's try with the list 
+def students(student):
+     for x in student:
+          print(x)
+
+stud =["Harshal","Anjali","Rahul","Tina","Mohit"]
+students(stud)
+
+print()
+
+# ------------------------- RETURN -----------------
+# to return a value for a function we need to use the "return"--> keyword
+# A return keyword is used to use the specific part of the function such as calculation in different part of the program. If needed it can be used outside the function
+# Here are some examples of functions with a return keyword
+
+def func_add(a,b):
+     result = a+b
+     print("The result of the above calculation is ",result)
+     return result
+func_add(5,7)
+print()
+
+# This is the next example of the function with return value having the square of the number 
+def func_square(number):
+     squareNum = number**2
+     print("The square of the", number ," number is :",squareNum)
+     return squareNum
+func_square(5)
+func_square(152)
+func_square(221)
+func_square(19)
+
+print()
+
+# ----------------------- RECURSIVE FUNCTIONS --------------------
+#A recursive function in Python is a function that calls itself during its execution.
+# It's like a function that asks for its own help to solve a problem. 
+# Recursive functions are often used to solve problems that can be broken down into smaller, similar sub-problems.
+
+
+# --- Example -1 : Factorial function
+def factorial(number):
+     if number == 0 or number == 1:
+          return 1
+     else:
+          return number * factorial(number-1)
+     
+result = factorial(5)
+print("The factorial is: ",result)
+print()
+
+
+# Example - 2 : Countdown function
+def countdown(n):
+     if n == 0 :
+          print("You are at zero point.... :(")
+     else:
+          print(n)
+          countdown(n-1)
+          
+countdown(11)
+
+     
+
