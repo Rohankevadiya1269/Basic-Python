@@ -588,6 +588,8 @@ for x in [0,1,2,3]:
 
 
 # ---------------------------------------------- F U N C T I O N S ------------------------------------------
+
+
 # A function is a block of code that runs/executes only when it is called
 # to write a function in python it is required to mention def keyword 
 
@@ -716,4 +718,245 @@ def countdown(n):
 countdown(11)
 print()
      
+# Fibonacci series using Recursive function
+def fibonacci_series(n, a=0, b=1):
+    if n > 0:
+        print(a, end=' ')
+        fibonacci_series(n - 1, b, a + b)
 
+# Example: Print the first 10 terms of the Fibonacci series
+fibonacci_series(10)
+print()
+
+print("-------------------")
+# ------------------------------ LAMBDA FUNCTION 
+
+
+# Lambda function is a type of function that is used when there is less complexity in the code
+# It is used when there is no need to have if else statement and loops in a function 
+# For example when there is need have a square of a number so in that case if we define a function then the complexity of the code increases
+# so we use lambda function which is anonymous ---> meaning having no name
+#When we need to use lambda function we have to use lambda keyword 
+# It can have multiple arguments but can consist only single expression
+
+# SYNTAX --->  lambda argument : expression
+
+# Example: we need to print the square of a number
+
+squared_num=(lambda a : a**2)
+number = 5
+print(f"{squared_num(number)}")
+
+print("-------------------")
+
+# If we want to print the 3 multiple of a number
+
+triplet =  lambda a : a*3
+number = 822426
+print(f"The 3 times of {number} is {triplet(number)}")
+print("-------------------")
+
+# The lambda function also acccounts for 3 other sub-functions they are  :  map(), sort() and filter()
+
+# Finding the greater number through lambda
+max_of_two = lambda a, b: a if a > b else b
+
+result = max_of_two(10, 7)
+print("The maximum of 10 and 7 is:", result)
+print("-------------------")
+
+# checking if the number is positive or negative
+is_positive = lambda x: x > 0
+
+result = is_positive(5)
+print("Is 5 positive?", result)
+print("-------------------")
+
+
+# Reversing the string
+reversed_string = lambda a:a[::-1]
+result =  reversed_string("ROHAN")
+print("The reverse string is :",result)
+
+print("-------------------")
+
+#Generating the power function 
+# In this we will have a power of number with another number
+
+power_func = lambda m,n : m**n
+result = power_func(5,3)
+print("The power of 3 on 5 is :", result)
+print()
+print("-------------------")
+
+
+
+#------------------------------------------
+#------------------------------------------
+#------------------------------------------
+#------------------------------------------
+#   ----------------------------------------- OBJECT - ORIENTED --------------------------------------------
+
+##  ------- ---------------------  1 CLASSES AND OBJECT  -----------------------
+# Classes are like blueprint or object constructors or a template to create objects
+# Classes can contain variables that is called property of a class and functions that is called method of a class
+
+# Object are instances of a class that has the access to the properties of the class
+# self represents the instance of the class, by which we can access the properties of the class
+
+# Example of a simple class
+# Let us create a class of person having values such as name and occupation
+# To define class it is required to mention class keyword
+
+class Person:
+     name= "Rohan"
+     occupation="Student"
+     
+a = Person()            # We have created an object that refers to class person
+print(a.name) # This     # This will print name mentioned inside the class ----> Rohan
+# If we do not want to print the same name from the class we can change it
+print()
+b = Person() 
+b.name="Riddham"
+print(b.name) # This # This will print name mentioned in the object ----> Riddham
+print()
+
+# Now we will create an instance of a class by using self method
+
+# Let us consider the above listed class Person
+ 
+class Person_new:
+     name = "Omkar"
+     age=25
+     networth = "$ 10 million"
+     # self if the reference to the current instance of the class and it is used to access the parameters of the class
+     def info(self):           # By using the self instance we can manipulate the values of the class
+          print(f"{self.name} is {self.age} years old and has networth {self.networth}")    
+ambani = Person_new()
+
+ambani.info()
+print()
+#  EXAMPLE-2
+# Let's consider a company that has to enter the details of the employees
+
+
+# ---------------------------------------> I have commented this example because it takes user input and to run the code below it requires  to enter 
+#                                          the details of the employees of this class
+
+
+# class Employee:                       # here we've defined a class named employee that will keep track of the employee information
+#      def emp_info(self):                # A class cannot be empty so we have created a method to insert the employee information. The method is a function here
+#           self.name=input("Enter employee name ")
+#           self.salary=float(input("Enter employee salary "))
+#           self.id=int(input("Enter employee id "))
+#      def display(self):                      # This method is defined to display the output of the details of employee
+#           print(f"-->  The name of the employee is: {self.name}")
+#           print(f"-->  The id of {self.name} is: {self.id}")
+#           print(f"-->  The salary of {self.name} is: {self.salary}")
+# # now here we will create an object that will have access of the properties of class
+# a=Employee()
+# a.emp_info()
+# a.display()
+# print()
+# b=Employee()
+# b.emp_info()
+# b.display()
+
+# print()
+
+# __init__ method also known as  --->  "CONSTRUCTOR"
+# It is the method of the class that is called when an object is created
+# It initializes the attributes of class
+
+# Let us consider a class that keeps track of the students details
+class Student_detail:
+     def __init__(self,stud_name,stud_rollno,stud_result):
+          self.name = stud_name
+          self.rollno = stud_rollno  
+          self.result =stud_result
+     def display(self):
+          print(f"--> The name of the student is: {self.name}")
+          print(f"--> The Roll no. of {self.name} is: {self.rollno}")
+          print(f"--> The result of {self.name} is: {self.result}")
+rohan = Student_detail("Rohan",7,"PASS")
+rohan.display()
+          
+          
+
+#   ----------------------------------------- 2 - INHERITANCE --------------------------------------------
+# It is the method of object oriented programming that allows to us to inherit or to borrow properties and methods from parent class to child class
+# Here parent class is also known as super class or base class
+# And the child class is often called as sub class or derived class
+# Let's understand better with an example
+
+class Mother:
+     def __init__(self,skin_tone,eye_color,hair_color,allergies):
+          self.skin_tone = skin_tone
+          self.eye_color = eye_color
+          self.hair_color =hair_color
+          self.allergies = allergies
+     def display(self):
+          print(self.skin_tone)
+          print(self.eye_color)
+          print(self.hair_color)
+          print(self.allergies)
+
+# Here we have defined a class called mother that is a parent class and we have displayed the qualities of mother 
+# Now we will inherit some properties of parent class in child class
+print()
+class Daughter(Mother):               #Here to define that daughter is inheriting from mother class we have to write the parent class inside bracket after child class
+     def __init__(self,skin_tone,eye_color,hair_color,allergies,height, weight): # Here we have defined some qualities as mentioned in parent class and added 2 properties i.e height and weight
+          super().__init__(skin_tone,eye_color,hair_color,allergies)
+          self.height = height
+          self.weight = weight
+     def display(self):
+          super().display()
+          print(self.height)
+          print(self.weight)
+
+suzzane=Daughter("fair","brown","blonde","no allergy",5.6,66)
+suzzane.display()
+# print(type(suzzane.eye_color))
+print("----------------------------------")
+
+# ----------------------------    ITERATORS   ----------------
+# Iterators are objects that are used to iterate over an iterable object 
+# It contains method such as iter() and next method 
+# iter() method is an method to iterate over an interable object 
+# next() method is used to get on the next iterable or element
+# Unlike loops iterators are used to iterate over any iterable item such as list, string, file or even a generator
+# It is used to solve more complex looping pattern than a for loop. We can also skip some elements, reverse the order and even combine multipe iteraotors
+# There is also a methos called StopIteration which stops the iteration operation
+
+# For iteration we can also use for loop, however it also uses built-in iterator methods which we cannot see
+
+# example of iteration
+
+employees = ["Rohan","Kenil","Raj","Vraj"]        # it is called iterable. On which iteration can occur
+print(dir(employees))
+print()
+itr_obj = iter(employees)                         # Here we have used the built-in iteration method using keyword iter, which we have assigned to variable so we can access it
+print(dir(itr_obj))
+print(type(itr_obj))                              # To cross check it we have used type function and it should return the type as list iterator
+# so to print each and every element we have to use next method
+print(next(itr_obj))   # It will return rohan 
+print(next(itr_obj))   # It will return Kenil
+print(next(itr_obj))   # It will return raj
+print(next(itr_obj))  # It will return vraj
+# If we use one more print statement as above it will raise an exception as it can iterate as much as the elements are
+
+# We can know whether the object is iterator or iterable 
+# on checking the dir(object) of the object if we get only __iter__ then it is :  iterable
+# And if it is returning __iter__ as well as _next__ then it is :  iterator
+# this is also called magic method
+print(" --------- Magic method")
+# We can also use this magic method for iteration
+
+admins = ["RK","Patel","Iyer","KD"]
+iter_obj  = admins.__iter__()
+
+print(iter_obj.__next__())
+print(iter_obj.__next__())
+print(iter_obj.__next__())
+print(iter_obj.__next__())
+ 
