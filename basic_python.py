@@ -16,6 +16,13 @@ print(type(c))    # It will return float
 
 
 
+# What is programming paradigm?  ---------------->  It is the way of organizing the program
+# Python support multiple paradigms which are as follows :⬇️
+
+# procedural-oriented programming
+# Funtional-oriented programming
+# Object-oriented programming
+
 # ------------------------------------T Y P E   C A S T I N G ----------------------------
 
 # --------------- in case there is need to define the type ("TYPE CASTING") can be used
@@ -796,6 +803,11 @@ print("-------------------")
 #------------------------------------------
 #------------------------------------------
 #   ----------------------------------------- OBJECT - ORIENTED --------------------------------------------
+# In object oriented programming we can solve real=life problems more effeciently than function-oriented programming
+# OOP provides the following features ⬇️
+# Reusability - (using Inheritance)
+# Data Security - (Using Encapsulation)
+# Data hiding - (using Abstraction   )
 
 ##  ------- ---------------------  1 CLASSES AND OBJECT  -----------------------
 # Classes are like blueprint or object constructors or a template to create objects
@@ -867,12 +879,20 @@ print()
 # __init__ method also known as  --->  "CONSTRUCTOR"
 # It is the method of the class that is called when an object is created
 # It initializes the attributes of class
+# There are 3 types of constructor, they are :
+# !. Parameterized constructor : the above example is the type of parameterized constructor where along with self other parameters are also defined
+# 2. Non-Parameterized constructor : Where only self is there inside the constructor and no other parameters are present
+# 3. Default constructor 
+
+
+# SELF - It is an variable that has the memory reference of the current object
+
 
 # Let us consider a class that keeps track of the students details
 class Student_detail:
      def __init__(self,stud_name,stud_rollno,stud_result):
-          self.name = stud_name
-          self.rollno = stud_rollno  
+          self.name = stud_name # here using self. method we are inserting the variable name inside the memory location      
+          self.rollno = stud_rollno   # and we are assigning the value to the variable which will directly come from the object parameter
           self.result =stud_result
      def display(self):
           print(f"--> The name of the student is: {self.name}")
@@ -880,8 +900,97 @@ class Student_detail:
           print(f"--> The result of {self.name} is: {self.result}")
 rohan = Student_detail("Rohan",7,"PASS")
 rohan.display()
-          
-          
+
+print("--------------------------------------")        
+# There are few built-in class functions in python
+# They are getattr, setattr, delattr and hasattr
+# getattr is a function to get the attribute in the class and the syntax is getattr(object_name, attribute_name)
+# setattr is a function to set or change the attribute in the class and its syntax is setattr(object_name, attribute_name, new_value)
+# delattr is a function to remove the attribute in the class and its syntax is delattr(object_name, attribute_name)
+# hasattr is a function that checks if the attribute is present in the class or not and if it is present it returns TRUE
+# Its syntax is hasattr(object_name, attribute_name)
+
+# let's understand these functions with an example
+
+class Employee():
+     company_name = "SoftEdge Infotech"   # This is called class variable and it will remain same for all the objects
+     # We can access it using the class name.variable name 
+     # here we will simply print Employee.company_name
+     # If we modify this variable then the value in the objects will also be changed
+     def __init__(self, emp_name,salary,age):
+          self.name = emp_name
+          self.salary = salary
+          self.age = age
+     def display (self):
+          print(f"The name of the employee is {self.name}")
+          print(f"The salary of {self.name} is {self.salary}")
+          print(f"The age of {self.name} is {self.age}")
+emp1 = Employee("Rohan",87000,25)
+emp1.display()      
+# Let's print the class variable
+print(Employee.company_name) # This will be softedge
+print(emp1.company_name)  # This will be softedge
+g = getattr(emp1,"salary" )   # This should print the salary 
+print(g)   
+
+# There are class methods that are in-built in python which works on class variables 
+# For instance variable we use self variable to access properties, the same way we have to do for the class method
+# But instead of using self we have to use cls variable 
+     
+
+setattr(emp1,"age",24)
+# now lets check if the age is changed from 25 to 24 or not ?
+# For this we will use __dict__ method to get the detail of the whole object. We can also use  getattr function
+
+print(emp1.__dict__)  # The age is sucessfully changed
+
+delattr(emp1,"age")  # this should delete the age attribute
+print(emp1.__dict__) # and it has sucessfully deleted age attribute
+
+# now we will check if the age attribute is present or not using the hasattr method
+print(hasattr(emp1,"age")) # it is returning false as expected because there is no age attribute anymore as we deleted it using the delattr function 
+print("--------------------")
+# Classes also contains built-in attributes
+# They are __doc__, __dict__, __name__ and __module__
+# the doc variable is used to know the documentation of the class or the purpose of the class
+# dict attribute is used to get all the namespaces of the class
+# name is used to know the name of the class. Sometimes it is required to use the name of the class and hence this method is used
+# module attribute is used to know that from which module the class belong
+# sometimes we import the class from different module and to know about the module we use this method
+
+# Let's understand it better with an example
+# let's cosider the above employee class
+print(Employee.__doc__) 
+print(Employee.__name__)
+print(Employee.__module__)
+print(Employee.__dict__)
+print("--------------------")
+
+# We can also check whether the object belongs to a particular class or not 
+# By using the isinstance method 
+# The syntax of this function is isinstance(object_name,class_name)
+# Based on the condition it will return boolean value either True or False
+print(isinstance(emp1,Employee)) # in this case it will return True as emp1 belongs to Employee class
+print("--------------------")
+
+# Instance variables : They are the variables that are made for the instance or objects 
+# It's value may differ from object to object 
+# Modification in one variable of the object doesn't affect the values of the other variables for different instances
+# In the above example the variables like emp_name and salary were the type of instance variable which stores the different memory address and stores different values for different objects but still it'll have the same variable name
+
+
+# we can also add the variable outside the class for the object 
+# In the above Employee class we haven't mentioned qualification inside the init method , but what if we want to add it in its instance i.e emp1
+# We can also change the value of the variable such as name mentioned in the above example 
+# by just writing --> emp1.name = "Raj" --> The name of the employee 1 will be changed without affecting the other variables
+# we simply do this 
+emp1.qualification = "B.Tech"
+# Now to check if the above variable is added to the instance or not, we will access the object using the dict method that we have seen earlier
+print(emp1.__dict__)
+print("--------------------")
+
+
+
 
 #   ----------------------------------------- 2 - INHERITANCE --------------------------------------------
 # It is the method of object oriented programming that allows to us to inherit or to borrow properties and methods from parent class to child class
