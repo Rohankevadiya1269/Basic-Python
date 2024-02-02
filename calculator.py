@@ -14,3 +14,4 @@ try:
         print("Enter the valid operation to perform")
 except Exception as e:
     print(f"Error: Invalid operation {e}")
+    

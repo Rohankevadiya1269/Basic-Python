@@ -819,7 +819,7 @@ print("-------------------")
 # Example of a simple class
 # Let us create a class of person having values such as name and occupation
 # To define class it is required to mention class keyword
-
+ 
 class Person:
      name= "Rohan"
      occupation="Student"
@@ -925,6 +925,24 @@ class Employee():
           print(f"The name of the employee is {self.name}")
           print(f"The salary of {self.name} is {self.salary}")
           print(f"The age of {self.name} is {self.age}")
+          
+     # We cannot directly modify the class variables. Hence we use class methods to modify or work on them 
+     # For defining class method the process is same as defining the normal method but we simply use a built-in decorator 
+     # The purpose of using the decorator is that the interpretor can know that below this line there is class method 
+     # We will use @classmethod decorator and also use (cls) for class reference where we were using self for object reference
+     # Let's understand it better with an example
+     @classmethod
+     def get_company_name(cls):  # This is what I have mentioned above that to use the class reference we have to mention the cls variable inside the method just as we were mentioning self method
+         # print(cls.company_name)   ----->  We have commented this line because it is printing the company that we have mentioned initially 
+         #This is how we can access as well modify the class variable/property using the class method
+          cls.company_name = "Google Inc."
+          print(cls.company_name)
+          # we can change the class variable's details by using this class method 
+          # we can also do this in the above line itself but it will get messed up
+print("----------- class method")
+Employee.get_company_name() # This prints softedge infotech
+
+     
 emp1 = Employee("Rohan",87000,25)
 emp1.display()      
 # Let's print the class variable
@@ -989,7 +1007,48 @@ emp1.qualification = "B.Tech"
 print(emp1.__dict__)
 print("--------------------")
 
+# ----------------------------------  Instance Methods --------------------------------
+# The getter and setter methods are not the built in methods but are simply the conventions 
+# Getter method : get the values of the instance variables
+# Setter method : set the values of the instance variables
 
+class Cricket_team:
+     def setName(self, nm): # this is called setter method which sets the value for the variable of the instance 
+          self.name = nm
+     def getName(self):     # This is the getter method which fetches the setted value of the variable of the instance
+          print("The name of the team is: ", self.name)    
+
+t1 = Cricket_team()
+t2 = Cricket_team()
+t1.setName("CSK")    # It is an example of setter method where we are not simply using the init method and setting the variable inside the object directly and passing them as parameter
+t2.setName("GT")      # Like we normally use to pass the values above when we call the class when making the object, but here we are setting the name using the setter method
+t1.getName()
+t2.getName()             # just as the setter method, we are using the getter method to get the value for the instance or object variable 
+print("--------------------")
+
+
+# In total we have 3 types of methods they are :
+# 1. Instance Method - The methods that works on instance data
+# 2. Class Method    - The methods that works on class data
+# 3. Static Method   - The methods that works on external data (Data that doesn't belong to any object)
+
+# static method 
+# In this method there is no need to create object as it works on external data but there is need to mention the staticmethod decorator above the method so that interpreter knows that below this line there is static method
+# Below is an example of static method that we've used to know the simple interest from the bank
+# the interest rate of the bank remains the same/constant so in the formula we need to take it from the class Bank itself
+# in the static method called simpleInterest we just have mentioned the amount and years variable and will take interest of bank from class itself
+
+class Bank:
+     name = "Kotak Mahindra"
+     rate_of_interest = 12.05
+     # Now for static method we need to declare the staticMethod decorator
+     @staticmethod
+     def simpleInterest(principal_amount,number_of_years):
+          simple_interest = (principal_amount*number_of_years*Bank.rate_of_interest)/100
+          print(f"The simple interest of your amount {principal_amount} for {Bank.name} is {simple_interest}")
+Bank.simpleInterest(20000,2)   # As it is static method there is no need to make an object
+print("------------------------")         
+          
 
 
 #   ----------------------------------------- 2 - INHERITANCE --------------------------------------------
@@ -997,6 +1056,27 @@ print("--------------------")
 # Here parent class is also known as super class or base class
 # And the child class is often called as sub class or derived class
 # Let's understand better with an example
+
+# What is the need of inheritance ?  ( Important interview question
+# Answer is that inheritance is for the code-reusability
+# When you have relations among other classes
+
+class Employe:
+     bonus = 5500
+     def display(self):
+          print(f"The bonus of the employee is : {Employe.bonus}")
+class Manager(Employe): # by this way we have given a parent class inside the child class 
+     bonus= 11000
+     def show(self):
+         print(f"The bonus of the manager is : {Manager.bonus}")
+e1=Employe()
+m1=Manager()
+e1.display()   # this will show the bonus of the method in the parent class
+# e1.show()   # this was to illustrate that the child class can access parent class's properties and methods but the vice-verso is not possible 
+m1.show()       # Here it is accessing the method mentioned inside the child class
+m1.display()     # Child class can also access the methods and properties of parent class 
+print("------------------------")         
+
 
 class Mother:
      def __init__(self,skin_tone,eye_color,hair_color,allergies):
@@ -1012,6 +1092,11 @@ class Mother:
 
 # Here we have defined a class called mother that is a parent class and we have displayed the qualities of mother 
 # Now we will inherit some properties of parent class in child class
+
+
+# By using the super() class we can access the properties of the parent class
+# It returns an temporary object that contains a reference to the parent class
+# It makes inheritance more manageable and extensible 
 print()
 class Daughter(Mother):               #Here to define that daughter is inheriting from mother class we have to write the parent class inside bracket after child class
      def __init__(self,skin_tone,eye_color,hair_color,allergies,height, weight): # Here we have defined some qualities as mentioned in parent class and added 2 properties i.e height and weight
@@ -1027,6 +1112,119 @@ suzzane=Daughter("fair","brown","blonde","no allergy",5.6,66)
 suzzane.display()
 # print(type(suzzane.eye_color))
 print("----------------------------------")
+
+# --------- TYPES OF INHERITANCE ---------
+# 1. Single Inheritance - It means that there is one parent and one child class
+# 2. Multi-level Inheritance - Here Parent and child class are further inherited to form a new class. This forms the multi-level inheritance
+# 3. Hierarchical Inheritance - In this type of inheritance there is one parent class and mutliple child classes 
+# 4. Multiple Inheritance  - In this type of inheritance there are multiple parent classes and from these parent classes one child class if formed, It is one of the important type of inheritanc
+# 5. Hybrid Inheritance - It contains various different types of inheritance
+# 6. Cyclic Inheritance
+
+# ----- MRO ( Method Resoulution order ) ------------- 
+# MRO represents how the properties ( attributes, methods) are searched in inheritance
+# Python first search in child class and then goes to parent class. So priority is to the child class
+
+# Example of multi-level inheritance
+class Grand_father :
+     def __init__(self):
+          print("Grandfather constructor called")
+          self.name = "RK"
+class Father(Grand_father):
+     def __init__(self):
+          super().__init__()
+          print("Father constructor called")
+          self.occupation = "Bussinessman"
+class Son (Father):
+     def __init__(self):
+          super().__init__()
+          print("Son constructor called")
+          self.city="New York"
+# Here the son constructor is called as its preference is higher 
+# If there was no son constructor, in that case father constructor would've called. Also if father constructore was not there then grand father constructor would've been called
+# the above case is only true when we are not using the super method 
+# Once we define the super keyword to access the property of parent class it will call the constructor of the parent as well as grand parent class
+# As it is multi level inheritance we have created an object of child class and by using inheritance we will access the properties not only of child class but also of parent and grand parent class
+
+obj_1 = Son()
+# The object that we've made here is of the child class, but as it multi level inheritance we can access the properties of the parent and grand parent class using this object itself
+print(obj_1.city)  # It is the property of the child class itself This will print New york
+print(obj_1.occupation) # It is the property of the parent class and will print Bussinessman
+print(obj_1.name) # It is the property of grand parent class and will print RK
+
+
+
+print("--------------------------")
+
+
+# Hierarchical inheritance example
+# consider a class called person that has properties like name and age
+# we will create another class called student that inherits person class and will inherit its property such as name and age and will have and additional property called marks
+# Same will be the case with another class called employee and it will also have an additional property called salary
+
+class Person:
+     def __init__(self,name,age):
+          self.name= name
+          self.age= age
+     def display(self):
+          print(f"The name and age of the person is {self.name} and {self.age}")
+          
+class Employee(Person):
+     def __init__(self,name,age,salary):
+          super().__init__(name,age)
+          self.salary =  salary
+     def displayE (self):
+          print(f"The name, age and salary of the employee is {self.name},{self.age} and {self.salary}")
+class Student(Person):
+     def __init__(self,name,age,marks):
+          super().__init__(name,age)
+          self.marks = marks
+     def displayS (self):
+          print(f"The name, age and marks of the student is {self.name},{self.age} and {self.marks}")
+          
+s1 = Student("Harsh",21,93)
+e1 = Employee("Rahul",28,300000)
+p1 = Person("Jayraj",24)
+
+s1.displayS()
+e1.displayE()
+p1.display()
+
+print("--------------------------")
+
+
+# Multiple inheritance example
+# Let us  consider that there are 3 classes that are district, state and country
+# And each class will have its office
+class Country:
+     def __init__(self):
+          print("Country constructor is called")
+          self.office="Delhi"   # This is the office of the country class
+class State:
+     def __init__(self):
+          print("State constructor is called")
+          # super().__init__()
+          self.office = "Ahmedabad"
+class District(State,Country): # Here when we are inheriting multiple classes, then the init method of the class on the left will be called
+     # because the priority of the classes on the left is higher
+     def __init__(self):
+          super().__init__()   # Now as we have used super method the constructor of the parent of the left side is called 
+          # but to call the constructor of the parent class on the left side we have to use the super method in the class on the left side (in this case state class)
+          print("District constructor is called")
+          super().__init__()
+          self.office = "Sabarmati"
+
+o1= District()
+print(o1.__dict__)
+print("--------------------------")
+
+#------------------------------ Constructor-Overriding --------------------------------
+# In inheritance when in the child class there is no constructor (__init__) then it automatically calls the constructor of the parent class (if described
+# But what if the child class also has the constructor ???...
+# Then the preference of the constructor of the child class will be higher than the parent class
+# This is called constructor over-riding
+
+
 
 # ----------------------------    ITERATORS   ----------------
 # Iterators are objects that are used to iterate over an iterable object 
@@ -1068,4 +1266,205 @@ print(iter_obj.__next__())
 print(iter_obj.__next__())
 print(iter_obj.__next__())
 print(iter_obj.__next__())
+
+# print() 
+print("--------------------------")
+
+ # ---------------- Encapsulation ------------------------------
+ # The wrapping up of data and methods working on data together in a single unit (i.e.class) is callled encapsulation
+ # The main purpose of encapsulation is to stop the access of the data and properties by the use of objects outside the class
+ # By using encapsulation the properties can only be accessed with the help of the class methods
+ # For example in the class without encapsulation when we create an object of its respective class, then we can access the properties of the class directly using the object
+ # This could be done in this way ---> object_name.property
+ # This could land the code in trouble sometimes
+ # so to avoid it we use encapsulation 
  
+ # Example of the code without encapsulation
+ 
+class Finance:    # this is the finance class and has the data called revenue that is sensitive
+     def __init__(self):
+          self.revenue = 10000
+          self.number_of_sales = 114
+f1 = Finance()
+print(f1.__dict__) # To know the content of the finance class we are printing the dict of the object
+class HR:
+     def __init__(self):
+          self.number_of_employee = 16
+          f1.revenue=50000  # Here we are not only accessing the sensitive data of the class but also modifying the value it
+          # This type of data cannot be directly accessed by the object of the class
+          # Now we will print the dict of the HR class to confirm that the data is changed
+h1 = HR()
+print(f1.__dict__)          # This will show that the data of the fincance class i.e revenue is getting modified
+
+print("--------------------------")
+
+# so in the above example we changed the sensitive data of the class from outside the class
+# consider the website of the bank could be accessed in an unauthorized way, This may be problematic
+# Hence to prevent this from happening, encapsulation is used
+
+
+# Generally in encapsulation, we restrict the data access outside the class
+# Encapsulation can be achieved by declaring the data members and methods of the class as private
+# So we use access modifier : they are public, private and protected
+# We don't use the protected method much in python so here we will only know more about public and private
+
+# Public member - Accessible anywhere by using the object reference
+# Private member -  Accessible within the class only via methods
+# Protected member - Accessible within class and it's subclasses (Basically it is used in inheritance, but not often)
+
+# So in order to make the revenue variable private, we just add two underscore infront of the variable __
+# now let's check it again
+
+class Finance:
+     def __init__ (self):
+          self.__revenue= 100000   # This is private member as it has two underscores
+          self._number_of_employee = 120   # This is protected member as it has only one underscore
+     def display(self):
+          print(f"The revenue generated is {self.__revenue}, with the help of {self._number_of_employee} employees")
+f1 = Finance()
+
+print(f1.__dict__)
+
+class HR:
+     def __init__(self):
+          self.number_of_center=55
+          f1.__revenue=110 # by using this method the private data variable cannot be modified but instead a new private data variable is created for the HR class
+          #print(f1.__dict__)# This line is commented because it generates an error because the revenue is private member and cannot be accessed by object
+h1 = HR()
+print(f1.__dict__)
+print(h1.__dict__)
+# print(__revenue) # It will give an error as private members cannot be accessed outside the class but they can be accessed it there is a method defined in class
+f1.display() # so now by using the class method we can see the private members
+print("--------------------------")
+
+# The private data is stored as _classname__variablename and this process is called name-mangling
+# Although python provides some security by hiding the private members, it does not completely hide them
+# If someone knows that private variable are stored after having name mangling, then they can access those variables
+# below I'll illustrate that we can access private variable 
+
+# print(f1.__revenue) # This will require 
+print(f1._Finance__revenue) # By using it will print the private variable too. Because I know name-mangling I can access the  
+print("--------------------------")
+
+# --------------------------------- POLYMORPHISM ----------------------------
+# Polymorphism is an ability of python to take many forms
+#  Python has several built-in polymorphism objects
+# such as + operator which works on both integer and string
+# next is len() function which can count the number of elements in list, no of keys in dictionary as well as it can count the number of words in string
+#Then there is reversed()function which can print the words in reversed order of a string as well as it can print the elements in reverse order of a list. it is illustrated in the example below
+
+a = "INFOSYS"
+for i in  reversed(a):
+     print(i)# It will print SYSOFNI
+print("--------------------------")
+
+li = ["Ram","Laskshman","Janki"]
+for j in reversed(li):
+     print(j)# It will print janki, lakshman, ram
+# Here we saw the example of polymorphism where the same function has more than one form 
+print("--------------------------")
+
+ 
+ # We can also change the functionality of the built-in function by using over-riding
+ # We cannot directly use the len() function to know the length of the object
+ # for that we have to define the len method in our class
+ 
+ # let's understand by example
+ 
+class Shopping:
+      def __init__(self,basket1,basket2,basket3):
+           self.clothes = basket1       # clothes will go in basket 1
+           self.electronics = basket2   # electronic items will go inside the basket 2
+           self.others= basket3         # other items will go inside the basket3
+           
+user1= Shopping(["Hoodie","6 Pocket Cargo","T-shirt","Denim Jacket","3 pair of jeans"],["Laptop","Mobile","Fridge"],["Bagpack","Tiffin"])
+# print(len(user1)) # this will return error as we cannot directly measure the length of the object 
+# The above line returns error so I have commented that line
+
+# So we can create the custom len method
+
+class Shopingg:
+          def __init__(self,basket1,basket2,basket3):
+               self.clothes = basket1       # clothes will go in basket 1
+               self.electronics = basket2   # electronic items will go inside the basket 2
+               self.others= basket3         # other items will go inside the basket3
+          def __len__(self): # this is the magic method which can return the len of the object
+               return len(self.clothes)+len(self.electronics)+len(self.others)  # here we are returning the len because if we print the values it will  give error sometime
+          # As print returns none and the len() function requires integer to return a number
+          # And hence we are having the return 
+          
+user2 = Shopingg(["Hoodie","6 Pocket Cargo","T-shirt","Denim Jacket","3 pair of jeans"],["Laptop","Mobile","Fridge"],["Bagpack","Tiffin"])
+print(len(user2))
+print("--------------------------")
+
+class BMW:
+     def fuel_type(self):
+          print("Diesel")
+     def top_speed(self):
+          print("213 km/hr")
+class Ferrari:
+     def fuel_type(self):
+          print("Petrol Octane 90")
+     def top_speed(self):
+          print("311 km/hr")
+          
+def car_select(obj):
+     obj.fuel_type()
+     obj.top_speed()
+bmw=BMW()
+ferrari=Ferrari()
+# here we have shown polymorphism by illustrating the same methods having different functionality
+# In this example we have used the same function called fuel type and top speed
+# but being same they print different values
+car_select(bmw)
+print("--------------------------")
+car_select(ferrari)
+print("--------------------------")
+
+# ------------------------ Operator - Overloading  ----------------------
+# The meaning of operator-overloading is that same operator behaves differently depending on values
+# for example + operator works in a different way
+# 1 - for adding two integers
+
+a=55
+b=14
+print(a+b) # here + operator works for addition of 2 numbers and output will be 69
+print("--------------------------")
+
+# 2 - for string concatenation
+
+greeting = "Hello"
+name = "Raj"
+print(greeting +" "+ name)
+
+print("--------------------------")
+
+# --------------------------- Modules ---------------------------------
+# A module is like code library
+# It contains set of functions you want to include in the application
+# here we have created a file called mymodule.py and there I have created a function called greeting where it prints greeting.
+# to use the module we have to import the name of the module and then we have called greeting
+
+import module_res.mymodule as mymodule
+mymodule.greeting("Rohan")
+# In the below example i have created a simple calculator in another file and I am importing it 
+# result = mymodule.calci(15,11)
+# print(result)
+
+# mymodule.KBC()  
+
+# these I have commented kbc because it asks for input at run-time and it disturbs the code below it 
+# We can also import module by the name we want to import. This is called module re-naming or aliasis
+# for example below I have imported 
+# 
+# 
+# import mymodule as mm
+# mm.KBC()
+print("--------------------------")
+
+# We can import only specific part of the module such as function, class or variable 
+from module_res import mymodule
+mymodule.greeting("124dd")
+
+from module_res import mymod_2
+mymod_2.greet("RRK")
