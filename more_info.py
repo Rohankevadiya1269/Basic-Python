@@ -93,3 +93,69 @@
 # itertools: Functions creating iterators for efficient looping.
 # logging: Flexible event logging system for applications.
 
+
+# While it's challenging to provide an exhaustive list of every method and concept in Python OOP, I can provide you with a broader overview that covers various important concepts and methods:
+
+# Classes and Objects:
+
+# Class definition and object instantiation.
+# Constructor (__init__):
+
+# Initializing object attributes when an object is created.
+# Destructor (__del__):
+
+# Cleanup code when an object is about to be destroyed.
+# Inheritance:
+
+# Creating a new class that inherits attributes and methods from an existing class.
+# Polymorphism:
+
+# The ability of a function or method to behave differently based on the type of object it is acting upon.
+# Encapsulation:
+
+# Bundling of data and methods within a single unit (class), with access control.
+# Abstraction:
+
+# Simplifying complex systems by modeling classes based on real-world entities and hiding unnecessary details.
+# Method Overloading and Overriding:
+
+# Overloading: Defining multiple methods with the same name but different parameter types or a different number of parameters.
+# Overriding: Providing a new implementation for a method in a subclass.
+# Static and Class Methods:
+
+# Static Method: A method that belongs to a class rather than an instance.
+# Class Method: A method that takes the class as its first parameter.
+# Property Decorators:
+
+# Getters, setters, and deleters for class attributes.
+# Abstract Classes and Methods:
+
+# Defining abstract classes and methods using the ABC module.
+# Operator Overloading:
+
+# Defining special methods like __add__, __sub__, etc., to enable the use of operators with custom objects.
+# Composition:
+
+# Building complex objects by combining simpler objects.
+# Mixin Classes:
+
+# Reusable classes that provide additional functionality to other classes.
+# Method Chaining:
+
+# Writing methods in a way that allows multiple method calls on a single line.
+# Decorators:
+
+# Modifying the behavior of functions or methods.
+# Slots:
+
+# Optimizing memory usage by defining a fixed set of attributes for a class.
+# Metaclasses:
+
+# Classes that define how classes themselves are defined.
+# Named Tuples:
+
+# Creating lightweight, immutable data structures with named fields.
+# Data Classes:
+
+# Simplifying the creation of classes primarily used for storing data.
+# These concepts cover a wide range of topics related to object-oriented programming in Python. Mastering these concepts will certainly enhance your ability to tackle various interview questions related to Python OOP. Remember that practical experience and applying these concepts in projects are crucial for a deeper understanding.

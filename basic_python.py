@@ -1455,7 +1455,7 @@ mymodule.greeting("Rohan")
 
 # these I have commented kbc because it asks for input at run-time and it disturbs the code below it 
 # We can also import module by the name we want to import. This is called module re-naming or aliasis
-# for example below I have imported 
+# for example below I have impor ted 
 # 
 # 
 # import mymodule as mm
@@ -1468,3 +1468,4 @@ mymodule.greeting("124dd")
 
 from module_res import mymod_2
 mymod_2.greet("RRK")
+ 

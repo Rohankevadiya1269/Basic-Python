@@ -1,0 +1,4 @@
+Hey ! this is file handling and this is the write method 
+This text is written by python code using the file writing method
+
+This is the text that is appended through append method

@@ -1,0 +1,11 @@
+58,69,75
+41,65,85
+87,75,78
+
+lst_obj1
+lst_obj2
+lst_obj3
+
+lst_obj1
+lst_obj2
+lst_obj3

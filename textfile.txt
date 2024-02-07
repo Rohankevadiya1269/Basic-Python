@@ -1,0 +1,2 @@
+This is the textfile that is created for learning file handling 
+In this file I'll try to access and modify the content in this file from the python code
